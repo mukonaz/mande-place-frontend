@@ -1,0 +1,26 @@
+/* src/pages/CartPage.css */
+.cart-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .cart-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    width: 300px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .cart-image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  .cart-total {
+    margin-top: 20px;
+  }
+  
