@@ -1,4 +1,3 @@
-// src/services/api.js
 import axios from 'axios';
 
 const API_URL = 'http://localhost:5000/api';
@@ -13,4 +12,3 @@ export const loginUser = async (credentials) => {
   return response.data;
 };
 
-// Similarly, add functions for getting products, adding products, etc.

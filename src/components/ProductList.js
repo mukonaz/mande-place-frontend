@@ -1,4 +1,3 @@
-// src/components/ProductList.js
 import React, { useEffect, useState } from 'react';
 import ProductCard from './ProductCard';
 import axios from 'axios';

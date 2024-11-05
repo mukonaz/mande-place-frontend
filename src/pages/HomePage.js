@@ -9,7 +9,6 @@ const HomePage = () => {
       <p>Browse and find the best products.</p>
       <ProductList />
       <AddProductPage />
-      {/* You can add product listings or other components here */}
     </div>
   );
 };

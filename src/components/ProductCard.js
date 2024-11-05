@@ -1,4 +1,3 @@
-// src/components/ProductCard.js
 import React from 'react';
 import './ProductCard.css'; // Import CSS for the product card
 

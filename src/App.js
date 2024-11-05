@@ -1,4 +1,3 @@
-// src/App.js
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ProductListingPage from './pages/ProductListingPage';
@@ -22,7 +21,6 @@ const App = () => {
     setTotalPrice(savedTotalPrice);
   }, []);
 
-  // Save cart items and total price to local storage whenever they change
   useEffect(() => {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
     localStorage.setItem('totalPrice', JSON.stringify(totalPrice));
