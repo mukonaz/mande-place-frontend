@@ -3,7 +3,7 @@ import './ProductListingPage.css';
 
 const ProductListingPage = ({ products, cartItems, setCartItems, setTotalPrice }) => {
   const handleAddToCart = (product) => {
-    // Check if the product is already in the cart
+    
     const existingProduct = cartItems.find(item => item.id === product.id);
 
     let updatedCart;
@@ -13,15 +13,13 @@ const ProductListingPage = ({ products, cartItems, setCartItems, setTotalPrice }
         item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
       );
     } else {
-      // Add the new product to the cart with quantity of 1
+     
       updatedCart = [...cartItems, { ...product, quantity: 1 }];
     }
 
-    // Update the cart and total price state
     setCartItems(updatedCart);
     setTotalPrice(prevPrice => prevPrice + product.price);
 
-    // Log a success message
     console.log(`Added ${product.name} to cart. Quantity: ${existingProduct ? existingProduct.quantity + 1 : 1}`);
   };
 

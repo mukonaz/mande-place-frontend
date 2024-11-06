@@ -1,7 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './CartPage.css';
 
 const CartPage = ({ cartItems, setCartItems, totalPrice, setTotalPrice }) => {
+  const navigate = useNavigate();
+
   const handleRemoveFromCart = (product) => {
     const existingProduct = cartItems.find(item => item.id === product.id);
 
@@ -16,6 +19,10 @@ const CartPage = ({ cartItems, setCartItems, totalPrice, setTotalPrice }) => {
       setCartItems(updatedCart);
       setTotalPrice(prevPrice => prevPrice - product.price);
     }
+  };
+
+  const handleProceedToCheckout = () => {
+    navigate('/payment'); // Navigate to payment page
   };
 
   return (
@@ -35,7 +42,7 @@ const CartPage = ({ cartItems, setCartItems, totalPrice, setTotalPrice }) => {
       </div>
       <div className="cart-total">
         <h2>Total Price: ${totalPrice}</h2>
-        <button onClick={() => alert('Proceed to checkout')}>Proceed to Checkout</button>
+        <button onClick={handleProceedToCheckout}>Proceed to Checkout</button>
       </div>
     </div>
   );

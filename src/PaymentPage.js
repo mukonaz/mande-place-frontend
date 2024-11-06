@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 import { useNavigate } from 'react-router-dom';
 
@@ -7,15 +7,41 @@ const PaymentPage = ({ totalPrice, cartItems, setCartItems }) => {
   const elements = useElements();
   const navigate = useNavigate();
 
+  const [clientSecret, setClientSecret] = useState('');
+
+  
+  useEffect(() => {
+    const createPaymentIntent = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/create-payment-intent', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ amount: Math.round(totalPrice * 100) }), // Convert dollars to cents
+        });
+
+        const data = await response.json();
+        setClientSecret(data.clientSecret);
+      } catch (error) {
+        console.error('Error creating payment intent:', error);
+      }
+    };
+
+    if (totalPrice > 0) {
+      createPaymentIntent();
+    }
+  }, [totalPrice]);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (!stripe || !elements) {
-      return; // Stripe.js has not yet loaded.
+    if (!stripe || !elements || !clientSecret) {
+      return;
     }
 
     const cardElement = elements.getElement(CardElement);
-    const { error, paymentIntent } = await stripe.confirmCardPayment('YOUR_CLIENT_SECRET', {
+    const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
         card: cardElement,
       },
@@ -27,12 +53,10 @@ const PaymentPage = ({ totalPrice, cartItems, setCartItems }) => {
       console.log('Payment successful:', paymentIntent);
       alert('Payment successful!');
 
-      // Redirect to order page
-      navigate('/order', {
-        state: { cartItems }, // Pass the cart items to the order page
-      });
       
-      // Reset cart after successful payment
+      navigate('/order', {
+        state: { cartItems },
+      });
       setCartItems([]);
     }
   };
@@ -42,7 +66,7 @@ const PaymentPage = ({ totalPrice, cartItems, setCartItems }) => {
       <h1>Payment</h1>
       <form onSubmit={handleSubmit}>
         <CardElement />
-        <button type="submit" disabled={!stripe}>
+        <button type="submit" disabled={!stripe || !clientSecret}>
           Pay ${totalPrice.toFixed(2)}
         </button>
       </form>

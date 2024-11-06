@@ -18,6 +18,8 @@ const Navbar = ({ cartItems}) => {
         <Link to="/cart" className='cart-link'>
           Cart ({cartItems.reduce((acc, item) => acc + item.quantity, 0)})
         </Link>
+        <Link to="/login">Login</Link>
+        <Link to="/register">Register</Link>
       </div>
     </nav>
   );
