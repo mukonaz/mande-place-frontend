@@ -46,23 +46,31 @@ const RegisterPage = () => {
     //     <button type="submit">Register</button>
     //   </form>
     // </div>
-    /* From Uiverse.io by ayyjayy2 */ 
-<StyledWrapper>
+    /* From Uiverse.io by ayyjayy2 */
+    <StyledWrapper>
+      <div className='center'>
       <form className="form" onSubmit={handleSubmit}>
         <div className="title">Welcome,<br /><span>sign up to continue</span></div>
-        <input className="input" name="email" placeholder="Email"  value={username}
+        <input className="input" name="email" placeholder="Email" value={username}
           onChange={(e) => setUsername(e.target.value)}
           required type="email" />
         <input className="input" name="password" placeholder="Password" value={password}
           onChange={(e) => setPassword(e.target.value)}
           required type="password" />
-        <button className="button-confirm" type="submit">Let`s go →</button>
+        <button className="button-confirm" type="submit">Register →</button>
       </form>
+      </div>
     </StyledWrapper>
   );
 };
 
 const StyledWrapper = styled.div`
+
+  .center {
+   max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
   .form {
     --input-focus: #2d8cf0;
     --font-color: #323232;
@@ -79,6 +87,7 @@ const StyledWrapper = styled.div`
     border-radius: 5px;
     border: 2px solid var(--main-color);
     box-shadow: 4px 4px var(--main-color);
+   
   }
 
   .title {
@@ -164,6 +173,9 @@ const StyledWrapper = styled.div`
 
   form.form {
     margin-top: 1rem;
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
 }`;
 
 export default RegisterPage;

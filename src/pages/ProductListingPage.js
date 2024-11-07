@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
+// import Navbar from '../components/Navbar';
 import Search from '../components/Search';
 import ProductList from '../components/ProductList';
 import './ProductListingPage.css';
@@ -28,8 +28,10 @@ const ProductListingPage = ({ cartItems, setCartItems, totalPrice, setTotalPrice
 
   return (
     <div className="product-listing-page">
-      <Navbar cartItems={cartItems} />
+      {/* <Navbar cartItems={cartItems} /> */}
       <Search onSearch={handleSearch} />
+      <h1>welcome to the Mande-place</h1>
+      <h4>Buy and sell with us:</h4>
       <ProductList onAddToCart={handleAddToCart} />
     </div>
   );

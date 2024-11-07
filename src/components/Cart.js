@@ -34,8 +34,8 @@ const CartPage = ({ cartItems, setCartItems, totalPrice, setTotalPrice }) => {
             <img src={item.image} alt={item.name} className="cart-image" />
             <h2>{item.name}</h2>
             <p>Quantity: {item.quantity}</p>
-            <p>Price: ${item.price}</p>
-            <p>Total: ${item.price * item.quantity}</p>
+            <p>Price: R{item.price}</p>
+            <p>Total: R{item.price * item.quantity}</p>
             <button onClick={() => handleRemoveFromCart(item)}>Remove One</button>
           </div>
         ))}

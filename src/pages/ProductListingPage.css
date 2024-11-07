@@ -9,6 +9,9 @@
   }
   .product-list {
     padding: 20px;
+    display: flex;
+    justify-content: center;
+
 }
 
 .product-cards {

@@ -32,7 +32,7 @@ const ProductListingPage = ({ products, cartItems, setCartItems, setTotalPrice }
             <img src={product.image} alt={product.name} className="product-image" />
             <h2>{product.name}</h2>
             <p>{product.description}</p>
-            <p>${product.price}</p>
+            <p>R{product.price}</p>
             <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
           </div>
         ))}

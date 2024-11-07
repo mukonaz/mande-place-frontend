@@ -5,7 +5,7 @@ import './Navbar.css';
 const Navbar = ({ cartItems}) => {
   return (
     <nav className="navbar">
-      <h1 className="shop-name">the chosen one</h1>
+      <h1 className="shop-name">Mande-Place</h1>
       <div className="nav-links">
         <Link to="/order">Order</Link>
         <div className="dropdown">
